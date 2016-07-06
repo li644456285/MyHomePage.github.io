@@ -10,6 +10,25 @@ function fnRandom(){
 	var random=Math.random()*400+2000;
 	return random;
 }
+// var time2;
+function shrink(){
+	var	time2=setTimeout(function(){
+		$('#inner1')
+		.animate({left:'+=40px'},1000)
+		.animate({left:'-=40px'},1000);
+		$('#inner3')
+		.animate({left:'-=40px'},1000)
+		.animate({left:'+=40px'},1000);
+		$('#inner2')
+		.animate({top:'+=40px'},1000)
+		.animate({top:'-=40px'},1000);
+		$('#inner4')
+		.animate({top:'-=40px'},1000)
+		.animate({top:'+=40px'},1000);
+	}, 1000);
+};
+
+
 $('#nav>li').each(function(index) {
 	$(this).css('background', arrColor[index]);
 });
@@ -36,6 +55,14 @@ $('#nav>li').each(function(index, el) {
 	});
 });
 
+$('#nav li').eq(4).mouseenter(function(event) {
+	shrink();
+	console.log(1);
+});
+// $('#nav li').eq(4).mouseleave(function(event) {
+// 	clearTimeout(time2);
+// });
+
 
 $('#skill #right div').each(function(index) {
 	$(this).animate({'width': arrWidth[index]},fnRandom(),function(){repeat(index)});
@@ -59,16 +86,16 @@ function clock(){
 $('#project .stop').hover(function() {
 	clearInterval(time);
 }, function() {
-	if(time){clearInterval(time);};
+	// if(time){clearInterval(time);};
 	setTimeout(clock, 3000);
 });
 $('#project #right').click(function(event) {
-	if(time){clearInterval(time);};
+	// if(time){clearInterval(time);};
 	bul=true;
 	if(n!=-7){move();}
 });
 $('#project #left').click(function(event) {
-	if(time){clearInterval(time);};
+	// if(time){clearInterval(time);};
 	bul=false;
 	if(n!=0){move();}
 });
@@ -90,6 +117,9 @@ $('#work div').each(function(index, el) {
 		$('#work ul').eq(index).siblings('ul').slideUp(1000);
 	});
 });
+
+
+
 
 
 
